@@ -1,4 +1,3 @@
-
 # {
 #   "type": "articles",
 #   "id": "1",
@@ -28,3 +27,36 @@
 #     "self": "http://example.com/articles/1"
 #   }
 # }
+
+
+class Model():
+
+    def __init__(self, id: str):
+        self.id = id
+
+
+class Person(Model):
+
+    def __init__(self,
+                 id: str,
+                 first_name: str,
+                 last_name: str,
+                 twitter: str):
+        super(Person, self).__init__(id)
+        self.first_name = first_name
+        self.last_name = last_name
+        self.twitter = twitter
+
+    def __repr__(self) -> str:
+        return '<Person(twitter={self.twitter!r})>'.format(self=self)
+
+
+class Article(Model):
+
+    def __init__(self, id: str, title: str, author: Person):
+        super(Article, self).__init__(id)
+        self.title = title
+        self.author = author
+
+    def __repr__(self) -> str:
+        return '<Article(title={self.title!r})>'.format(self=self)
